@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import '../../../../core/enums/enums.dart';
 import '../../data/models/firm_model.dart';
 
 abstract class FirmsState extends Equatable {
@@ -12,12 +13,12 @@ class FirmsLoading extends FirmsState {}
 
 class FirmsLoaded extends FirmsState {
   final List<FirmModel> firms;
-  final String selectedFilter;
+  final FirmStatus? selectedFilter;
   final String searchQuery;
 
   FirmsLoaded({
     required this.firms,
-    this.selectedFilter = 'All',
+    this.selectedFilter,
     this.searchQuery = '',
   });
 
@@ -26,12 +27,13 @@ class FirmsLoaded extends FirmsState {
 
   FirmsLoaded copyWith({
     List<FirmModel>? firms,
-    String? selectedFilter,
+    FirmStatus? selectedFilter,
+    bool clearFilter = false,
     String? searchQuery,
   }) {
     return FirmsLoaded(
       firms: firms ?? this.firms,
-      selectedFilter: selectedFilter ?? this.selectedFilter,
+      selectedFilter: clearFilter ? null : (selectedFilter ?? this.selectedFilter),
       searchQuery: searchQuery ?? this.searchQuery,
     );
   }

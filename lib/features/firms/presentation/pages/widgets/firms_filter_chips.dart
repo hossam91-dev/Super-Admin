@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firm_super_admin/core/extensions/l10n_extension.dart';
 import 'package:firm_super_admin/core/constants/app_colors.dart';
-
+import 'package:firm_super_admin/core/enums/enums.dart';
 
 class FirmsFilterChips extends StatelessWidget {
-  final String selectedFilter;
-  final Function(String) onFilterChanged;
+  final FirmStatus? selectedFilter;
+  final Function(FirmStatus?) onFilterChanged;
 
   const FirmsFilterChips({
     super.key,
@@ -15,11 +15,11 @@ class FirmsFilterChips extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final filters = [
-      context.l10n.filterAll,
-      context.l10n.filterActive,
-      context.l10n.filterTrial,
-      context.l10n.filterSuspended,
+    final List<({FirmStatus? status, String label})> filters = [
+      (status: null, label: context.l10n.filterAll),
+      (status: FirmStatus.active, label: context.l10n.filterActive),
+      (status: FirmStatus.trial, label: context.l10n.filterTrial),
+      (status: FirmStatus.suspended, label: context.l10n.filterSuspended),
     ];
 
     return SizedBox(
@@ -31,10 +31,10 @@ class FirmsFilterChips extends StatelessWidget {
         separatorBuilder: (context, index) => const SizedBox(width: 12),
         itemBuilder: (context, index) {
           final filter = filters[index];
-          final isSelected = selectedFilter == filter;
+          final isSelected = selectedFilter == filter.status;
 
           return GestureDetector(
-            onTap: () => onFilterChanged(filter),
+            onTap: () => onFilterChanged(filter.status),
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
               decoration: BoxDecoration(
@@ -43,7 +43,7 @@ class FirmsFilterChips extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  filter,
+                  filter.label,
                   style: TextStyle(
                     color: isSelected ? Colors.white : Colors.grey.shade600,
                     fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,

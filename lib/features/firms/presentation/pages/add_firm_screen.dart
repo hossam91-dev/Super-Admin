@@ -1,3 +1,4 @@
+import 'package:firm_super_admin/core/widgets/app_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:firm_super_admin/core/extensions/l10n_extension.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -43,9 +44,10 @@ class AddFirmScreen extends StatelessWidget {
 
   void _onStateChanged(BuildContext context, AddFirmState state) {
     if (state.status == AddFirmStatus.success) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(context.l10n.firmCreatedSuccess)),
-      );
+      AppToast.show(context, message: context.l10n.firmCreatedSuccess);
+      // ScaffoldMessenger.of(context).showSnackBar(
+      //   SnackBar(content: Text(context.l10n.firmCreatedSuccess)),
+      // );
       context.pop();
     } else if (state.status == AddFirmStatus.failure) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -74,7 +76,7 @@ class AddFirmScreen extends StatelessWidget {
       actions: [
         Center(
           child: Padding(
-            padding: const EdgeInsets.only(right: 16.0),
+            padding: const EdgeInsetsDirectional.only(end: 16.0),
             child: Text(
               '${state.currentStep + 1}${context.l10n.addFirmStepProgressPrefix}',
               style: const TextStyle(

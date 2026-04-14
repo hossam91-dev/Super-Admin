@@ -83,11 +83,12 @@ class LoginForm extends StatelessWidget {
 
             
             Align(
-              alignment: Alignment.centerRight,
+              alignment: AlignmentDirectional.centerEnd,
               child: TextButton(
                 onPressed: () {},
-                child: Text(context.l10n.forgotPassword,
-                  style: TextStyle(
+                child: Text(
+                  context.l10n.forgotPassword,
+                  style: const TextStyle(
                     color: AppColors.primary,
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
@@ -116,4 +117,3 @@ class LoginForm extends StatelessWidget {
     );
   }
 }
-

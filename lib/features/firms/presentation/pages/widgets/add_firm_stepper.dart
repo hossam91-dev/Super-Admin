@@ -19,8 +19,8 @@ class AddFirmStepper extends StatelessWidget {
               return Expanded(
                 child: Container(
                   height: 6,
-                  margin: EdgeInsets.only(
-                    right: index == 2 ? 0 : 8,
+                  margin: EdgeInsetsDirectional.only(
+                    end: index == 2 ? 0 : 8,
                   ),
                   decoration: BoxDecoration(
                     color: index <= currentStep

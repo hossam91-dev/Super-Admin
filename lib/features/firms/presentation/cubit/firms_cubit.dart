@@ -86,10 +86,10 @@ class FirmsCubit extends Cubit<FirmsState> {
     emit(FirmsLoaded(firms: _allFirms));
   }
 
-  void filterFirms(String status) {
+  void filterFirms(FirmStatus? status) {
     if (state is FirmsLoaded) {
       final currentState = state as FirmsLoaded;
-      emit(currentState.copyWith(selectedFilter: status));
+      emit(currentState.copyWith(selectedFilter: status, clearFilter: status == null));
       _applyFilters();
     }
   }
@@ -109,12 +109,8 @@ class FirmsCubit extends Cubit<FirmsState> {
       List<FirmModel> filteredList = _allFirms;
 
       // Apply status filter
-      if (currentState.selectedFilter != 'All') {
-        final statusToFilter = FirmStatus.values.firstWhere(
-          (e) => e.name.toLowerCase() == currentState.selectedFilter.toLowerCase(),
-          orElse: () => FirmStatus.active,
-        );
-        filteredList = filteredList.where((firm) => firm.status == statusToFilter).toList();
+      if (currentState.selectedFilter != null) {
+        filteredList = filteredList.where((firm) => firm.status == currentState.selectedFilter).toList();
       }
 
       // Apply search filter

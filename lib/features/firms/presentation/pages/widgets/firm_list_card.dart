@@ -34,9 +34,9 @@ class FirmListCard extends StatelessWidget {
               width: 4,
               decoration: BoxDecoration(
                 color: firm.statusColor,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(16),
-                  bottomLeft: Radius.circular(16),
+                borderRadius: const BorderRadiusDirectional.only(
+                  topStart: Radius.circular(16),
+                  bottomStart: Radius.circular(16),
                 ),
               ),
             ),
