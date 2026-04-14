@@ -1,0 +1,1 @@
+enum PasswordMethod { setupEmail, manual }

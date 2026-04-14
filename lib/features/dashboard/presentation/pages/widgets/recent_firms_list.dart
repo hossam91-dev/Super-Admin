@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:firm_super_admin/core/constants/app_strings.dart';
+import 'package:firm_super_admin/core/extensions/l10n_extension.dart';
+
 import 'package:firm_super_admin/core/constants/app_colors.dart';
 import '../../../data/models/dashboard_models.dart';
 
@@ -19,9 +20,9 @@ class RecentFirmsList extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            AppStrings.recentFirms,
-            style: TextStyle(
+          Text(
+            context.l10n.recentFirms,
+            style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
               color: AppColors.textDark,

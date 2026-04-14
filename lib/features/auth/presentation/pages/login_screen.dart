@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:firm_super_admin/core/extensions/l10n_extension.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:firm_super_admin/core/router/app_router.dart';
 import 'package:firm_super_admin/core/constants/app_colors.dart';
-import 'package:firm_super_admin/core/constants/app_strings.dart';
+
 import 'package:firm_super_admin/features/auth/presentation/cubit/login_cubit.dart';
 import 'package:firm_super_admin/features/auth/presentation/cubit/login_state.dart';
 import 'widgets/login_form.dart';
 import 'widgets/login_header.dart';
+import 'widgets/language_switcher.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -52,13 +54,15 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const SizedBox(height: 20),
+                      Align(
+                        alignment: AlignmentDirectional.topEnd,
+                        child: const LanguageSwitcher(),
+                      ),
+                      const SizedBox(height: 12),
 
-                      
                       const LoginHeader(),
                       const SizedBox(height: 48),
 
-                      
                       LoginForm(
                         formKey: _formKey,
                         emailController: _emailController,
@@ -66,12 +70,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         errorMessage: errorMessage,
                         isLoading: state is LoginLoading,
                       ),
-                      
+
                       const SizedBox(height: 40),
 
-                      
-                      const Text(
-                        AppStrings.version,
+                      Text(
+                        context.l10n.version,
                         style: TextStyle(
                           color: AppColors.textMuted,
                           fontSize: 14,
@@ -90,4 +93,3 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-

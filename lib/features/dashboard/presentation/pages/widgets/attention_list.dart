@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:firm_super_admin/core/constants/app_strings.dart';
+import 'package:firm_super_admin/core/extensions/l10n_extension.dart';
+
 import 'package:firm_super_admin/core/constants/app_colors.dart';
 import '../../../data/models/dashboard_models.dart';
 
@@ -21,8 +22,7 @@ class AttentionList extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                AppStrings.needsAttention,
+              Text(context.l10n.needsAttention,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -31,8 +31,7 @@ class AttentionList extends StatelessWidget {
               ),
               TextButton(
                 onPressed: () {},
-                child: const Text(
-                  AppStrings.seeAll,
+                child: Text(context.l10n.seeAll,
                   style: TextStyle(color: AppColors.primary),
                 ),
               ),

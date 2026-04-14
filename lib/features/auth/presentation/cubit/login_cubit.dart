@@ -14,19 +14,14 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   Future<void> login(String email, String password) async {
-    
     emit(LoginLoading());
-    
-    
+
     await Future.delayed(const Duration(seconds: 2));
-    
-    
-    
-    if (email == 'admin@lawsaas.com' && password == 'password') {
+
+    if (email == 'admin@g.com' && password == 'password') {
       emit(LoginSuccess());
     } else {
       emit(LoginError('Invalid credentials'));
     }
   }
 }
-

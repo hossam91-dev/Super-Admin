@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firm_super_admin/core/extensions/l10n_extension.dart';
 import 'package:firm_super_admin/core/constants/app_colors.dart';
-import 'package:firm_super_admin/core/constants/app_strings.dart';
 
 class LoginHeader extends StatelessWidget {
   const LoginHeader({super.key});
@@ -9,41 +9,47 @@ class LoginHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        
         Container(
-          width: 100,
-          height: 100,
+          width: 72,
+          height: 72,
           decoration: BoxDecoration(
             color: AppColors.primary,
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: BorderRadius.circular(18),
             boxShadow: [
               BoxShadow(
-                color: AppColors.primary.withOpacity(0.3),
-                blurRadius: 30,
-                spreadRadius: 5,
+                color: AppColors.primary.withOpacity(0.25),
+                blurRadius: 20,
+                spreadRadius: 2,
+                offset: const Offset(0, 6),
               ),
             ],
           ),
           child: const Icon(
             Icons.balance_rounded,
-            color: AppColors.white,
-            size: 50,
+            color: AppColors.onPrimary,
+            size: 36,
           ),
         ),
-        const SizedBox(height: 32),
-
-        
+        const SizedBox(height: 24),
         Text(
-          AppStrings.appName,
-          style: Theme.of(context).textTheme.headlineMedium,
+          context.l10n.appName,
+          style: const TextStyle(
+            color: AppColors.onSurface,
+            fontSize: 26,
+            fontWeight: FontWeight.w700,
+            letterSpacing: -0.5,
+          ),
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 6),
         Text(
-          AppStrings.appSubtitle,
-          style: Theme.of(context).textTheme.bodyMedium,
+          context.l10n.appSubtitle,
+          style: const TextStyle(
+            color: AppColors.onSurfaceVariant,
+            fontSize: 14,
+            fontWeight: FontWeight.w400,
+          ),
         ),
       ],
     );
   }
 }
-

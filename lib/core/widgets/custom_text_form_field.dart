@@ -9,6 +9,7 @@ class CustomTextFormField extends StatelessWidget {
   final bool obscureText;
   final String? errorText;
   final TextInputType keyboardType;
+  final String? initialValue;
   final void Function(String)? onChanged;
   final String? Function(String?)? validator;
 
@@ -21,6 +22,7 @@ class CustomTextFormField extends StatelessWidget {
     this.obscureText = false,
     this.errorText,
     this.keyboardType = TextInputType.text,
+    this.initialValue,
     this.onChanged,
     this.validator,
   });
@@ -31,6 +33,7 @@ class CustomTextFormField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TextFormField(
+          initialValue: initialValue,
           controller: controller,
           obscureText: obscureText,
           keyboardType: keyboardType,

@@ -1,56 +1,25 @@
+import 'package:firm_super_admin/features/dashboard/presentation/pages/widgets/dashboard_app_bar_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:firm_super_admin/core/constants/app_strings.dart';
+import 'package:firm_super_admin/core/extensions/l10n_extension.dart';
+
 import 'package:firm_super_admin/core/constants/app_colors.dart';
 
 class DashboardAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const DashboardAppBar({super.key});
+  final int index;
+  const DashboardAppBar({super.key, required this.index});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Text(
-        AppStrings.dashboard,
+      title: Text(
+        DashboardAppBarHelper.getTitle(index, context),
         style: TextStyle(
           color: AppColors.textDark,
           fontWeight: FontWeight.bold,
           fontSize: 20,
         ),
       ),
-      actions: [
-        Stack(
-          children: [
-            IconButton(
-              icon: const Icon(
-                Icons.notifications_outlined,
-                color: AppColors.primary,
-              ),
-              onPressed: () {},
-            ),
-            Positioned(
-              right: 3,
-              top: 3,
-              child: Container(
-                padding: const EdgeInsets.all(2),
-                decoration: BoxDecoration(
-                  color: Colors.orange,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                constraints: const BoxConstraints(minWidth: 16, minHeight: 10),
-                child: const Text(
-                  '3',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 10,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(width: 8),
-      ],
+      actions: DashboardAppBarHelper.getActions(index, context),
       backgroundColor: Colors.white,
       elevation: 0,
     );
@@ -59,4 +28,3 @@ class DashboardAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
-

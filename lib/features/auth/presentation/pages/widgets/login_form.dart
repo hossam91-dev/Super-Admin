@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:firm_super_admin/core/extensions/l10n_extension.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firm_super_admin/core/constants/app_colors.dart';
-import 'package:firm_super_admin/core/constants/app_strings.dart';
+
 import 'package:firm_super_admin/core/utils/validators.dart';
 import 'package:firm_super_admin/core/widgets/custom_elevated_button.dart';
 import 'package:firm_super_admin/core/widgets/custom_text_form_field.dart';
@@ -41,7 +42,7 @@ class LoginForm extends StatelessWidget {
             
             CustomTextFormField(
               controller: emailController,
-              hintText: AppStrings.emailHint,
+              hintText: context.l10n.emailHint,
               prefixIcon: const Icon(
                 Icons.email_outlined,
                 color: AppColors.textMuted,
@@ -57,7 +58,7 @@ class LoginForm extends StatelessWidget {
               builder: (context, state) {
                 return CustomTextFormField(
                   controller: passwordController,
-                  hintText: AppStrings.passwordHint,
+                  hintText: context.l10n.passwordHint,
                   obscureText: !cubit.isPasswordVisible,
                   prefixIcon: const Icon(
                     Icons.lock_outline_rounded,
@@ -85,8 +86,7 @@ class LoginForm extends StatelessWidget {
               alignment: Alignment.centerRight,
               child: TextButton(
                 onPressed: () {},
-                child: const Text(
-                  AppStrings.forgotPassword,
+                child: Text(context.l10n.forgotPassword,
                   style: TextStyle(
                     color: AppColors.primary,
                     fontWeight: FontWeight.w600,
@@ -99,7 +99,7 @@ class LoginForm extends StatelessWidget {
 
             
             CustomElevatedButton(
-              text: AppStrings.signIn,
+              text: context.l10n.signIn,
               isLoading: isLoading,
               onPressed: () {
                 if (formKey.currentState!.validate()) {

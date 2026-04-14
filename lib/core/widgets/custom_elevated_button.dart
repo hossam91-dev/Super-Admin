@@ -3,7 +3,7 @@ import '../constants/app_colors.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   final String text;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final Color backgroundColor;
   final Color textColor;
   final double borderRadius;
@@ -14,7 +14,7 @@ class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
     super.key,
     required this.text,
-    required this.onPressed,
+    this.onPressed,
     this.backgroundColor = AppColors.primary,
     this.textColor = AppColors.white,
     this.borderRadius = 12.0,
